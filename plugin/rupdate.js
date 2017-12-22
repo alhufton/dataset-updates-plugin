@@ -5,9 +5,7 @@ const crossRefAPI = function (doi) { return `http://api.crossref.org/works/${doi
 
 const styleCss = `
 body {
-
 }
-
 #doi-list {
 	position: absolute;
 	top: 0px;
@@ -16,16 +14,13 @@ body {
 	color: white;
 	background: rgba(0,0,0,0.8);
 }
-
 #doi-list a {
 	color: white;
 	text-decoration: underline;
 }
-
 #doi-list .updated {
 	color: orange;
 }
-
 #doi-list .updated a {
 	color: orange;
 }
@@ -77,8 +72,7 @@ function displayReferences(references, element) {
 			return list + referenceListItem(reference)
 		}, "<ul>") + "</ul>"
 		const title = '<h2>Data Resources in this article (orange indicates post publication update)</h2>'
-		const closer = '<input type=button name=type id='bt1' value='Show Layer' onclick="setVisibility('doi-list');";>' 
-		element.innerHTML = title + list + closer
+		element.innerHTML = title + list
 		massiveHack = references.length
 	}
 }
@@ -93,20 +87,5 @@ function referenceListItem(reference) {
 
 	return `<li class="${updated}"><a href="${link}" target="_blank">${reference.title}</a>, ${reference.modified_date} </li>`
 }
-
-function closerFunction() {
-        document.getElementById("doi-list").setAttribute("style", "display:none;");
-}
-
-function setVisibility(id) {
-        if(document.getElementById('bt1').value=='Hide Layer'){
-            document.getElementById('bt1').value = 'Show Layer';
-            document.getElementById(id).style.display = 'none';
-        }else{
-            document.getElementById('bt1').value = 'Hide Layer';
-            document.getElementById(id).style.display = 'inline';
-	}
-}
-
 
 
