@@ -77,7 +77,8 @@ function displayReferences(references, element) {
 			return list + referenceListItem(reference)
 		}, "<ul>") + "</ul>"
 		const title = '<h2>Data Resources in this article (orange indicates post publication update)</h2>'
-		element.innerHTML = title + list
+		const closer = '<a href="javascript:closerFunction()">Close</a>' 
+		element.innerHTML = title + list + closer
 		massiveHack = references.length
 	}
 }
@@ -91,6 +92,10 @@ function referenceListItem(reference) {
 	
 
 	return `<li class="${updated}"><a href="${link}" target="_blank">${reference.title}</a>, ${reference.modified_date} </li>`
+}
+
+function closerFunction() {
+        document.getElementById("doi-list").setAttribute("style", "display:none;");
 }
 
 
