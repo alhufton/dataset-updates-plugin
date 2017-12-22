@@ -29,6 +29,12 @@ body {
 #doi-list .updated a {
 	color: orange;
 }
+
+$(document).ready(function () {
+    $('#btn').click(function () {
+        $('#doi-list).hide();
+    });
+});
 `
 
 if (doiTag) {
@@ -77,7 +83,7 @@ function displayReferences(references, element) {
 			return list + referenceListItem(reference)
 		}, "<ul>") + "</ul>"
 		const title = '<h2>Data Resources in this article (orange indicates post publication update)</h2>'
-		const closer = '<a href="javascript:closerFunction()">Close</a>' 
+		const closer = '<button id="btn" name="button">[X] Hide</button>' 
 		element.innerHTML = title + list + closer
 		massiveHack = references.length
 	}
