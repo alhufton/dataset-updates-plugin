@@ -29,12 +29,6 @@ body {
 #doi-list .updated a {
 	color: orange;
 }
-
-$(document).ready(function () {
-    $('#btn').click(function () {
-        $('#doi-list).hide();
-    });
-});
 `
 
 if (doiTag) {
@@ -83,7 +77,7 @@ function displayReferences(references, element) {
 			return list + referenceListItem(reference)
 		}, "<ul>") + "</ul>"
 		const title = '<h2>Data Resources in this article (orange indicates post publication update)</h2>'
-		const closer = '<button id="btn" name="button">[X] Hide</button>' 
+		const closer = '<input type=button name=type id='bt1' value='Show Layer' onclick="setVisibility('doi-list');";>' 
 		element.innerHTML = title + list + closer
 		massiveHack = references.length
 	}
@@ -102,6 +96,16 @@ function referenceListItem(reference) {
 
 function closerFunction() {
         document.getElementById("doi-list").setAttribute("style", "display:none;");
+}
+
+function setVisibility(id) {
+        if(document.getElementById('bt1').value=='Hide Layer'){
+            document.getElementById('bt1').value = 'Show Layer';
+            document.getElementById(id).style.display = 'none';
+        }else{
+            document.getElementById('bt1').value = 'Hide Layer';
+            document.getElementById(id).style.display = 'inline';
+	}
 }
 
 
