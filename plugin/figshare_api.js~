@@ -26,9 +26,11 @@ function find_some_figshare(url, parameter, type) {
 
 function get_figshare_data_by_doi(doi) {
   find_some_figshare("https://api.figshare.com/v2/collections?doi=", doi, 'collection');
-//  find_some_figshare("https://api.figshare.com/v2/collections?resource_doi=", doi, 'collection');
-//  find_some_figshare("https://api.figshare.com/v2/articles?doi=", doi, 'article');
-//  find_some_figshare("https://api.figshare.com/v2/articles?resource_doi=", doi, 'article');
+  find_some_figshare("https://api.figshare.com/v2/collections?resource_doi=", doi, 'collection');
+
+// This is the line capturing our figshare datasets
+  find_some_figshare("https://api.figshare.com/v2/articles?doi=", doi, 'article');
+  find_some_figshare("https://api.figshare.com/v2/articles?resource_doi=", doi, 'article');
 }
 
 
@@ -123,8 +125,7 @@ function munger() {
 				title: data.title,
 				doi: data.doi,
 				published_date: data.published_date,
-				resource_link: data.resource_link,
-				link: data.figshare_url
+				link: data.resource_link
 			})
 		}
 	}

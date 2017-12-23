@@ -78,15 +78,13 @@ function displayReferences(references, element) {
 }
 
 function referenceListItem(reference) {
-	const doilink = "https://doi.org/" + reference.doi
-	const link = reference.link
-	const resourcelink = reference.resource_link
+	const link = "https://doi.org/" + reference.doi
 	const date = new Date(reference.modified_date)
 	const pub = new Date(pubDate)
 	const poop = date > pub
 	const updated = poop ? "updated" : ""
 	
 
-	return `<li class="${updated}"><a href="${link}" target="_blank">${reference.title}</a>, ${reference.modified_date} <a href="${doilink}">DOI-Link </a><a href="${resourcelink}">Resource-Link</a></li>`
+	return `<li class="${updated}"><a href="${link}" target="_blank">${reference.title}</a>, ${reference.modified_date} </li>`
 }
 
